@@ -1,11 +1,12 @@
-// Your Firebase configuration
+// Your Firebase configuration (replace with your actual config from Firebase Console)
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyCkWqy_sd9xrW3eg1cQlEUCTFmngS_tNaI",
+    authDomain: "students-b4af5.firebaseapp.com",
+    projectId: "students-b4af5",
+    storageBucket: "students-b4af5.firebasestorage.app",
+    messagingSenderId: "347751091965",
+    appId: "1:347751091965:web:b98acf8f1c513a8f017894",
+    measurementId: "G-VBCWB81BFK"
 };
 
 // Initialize Firebase
@@ -30,6 +31,7 @@ addButton.addEventListener('click', () => {
         })
         .catch(error => {
             console.error("Error adding document: ", error);
+            alert("Failed to add name. Please try again.");
         });
     }
 });
@@ -39,7 +41,6 @@ db.collection('names')
     .orderBy('timestamp', 'desc')
     .onSnapshot(snapshot => {
         namesList.innerHTML = ''; // Clear current list
-        
         snapshot.forEach(doc => {
             const name = doc.data().name;
             const li = document.createElement('li');
