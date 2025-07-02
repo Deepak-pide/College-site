@@ -28,11 +28,14 @@ addButton.addEventListener('click', () => {
         })
         .then(() => {
             nameInput.value = ''; // Clear input
+            alert("Name added successfully!");
         })
         .catch(error => {
             console.error("Error adding document: ", error);
             alert("Failed to add name. Please try again.");
         });
+    } else {
+        alert("Please enter a name.");
     }
 });
 
@@ -47,4 +50,7 @@ db.collection('names')
             li.textContent = name;
             namesList.appendChild(li);
         });
+    }, error => {
+        console.error("Error fetching names: ", error);
+        alert("Failed to load names. Please refresh the page.");
     });
